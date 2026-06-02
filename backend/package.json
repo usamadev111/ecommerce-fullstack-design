@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is an e commerce application ",
+  "keywords": [
+    "ecommerce",
+    "ECOMMERCE",
+    "ECOM"
+  ],
+  "license": "ISC",
+  "author": "Usama Fazal",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.6.3"
+  },
+  "devDependencies": {}
+}

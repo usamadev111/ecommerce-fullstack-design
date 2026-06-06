@@ -13,23 +13,39 @@ const productSchema = new mongoose.Schema(
     },
     originalPrice: {
       type: Number,
+      default: null,
     },
 
     image: {
       type: String,
       required: [true, "Product Image is required"],
     },
+    images: {
+      type: [String],
+      default: [],
+      validate: {
+        validator: function (arr) {
+          return arr.length <= 6;
+        },
+        message: " A product can have maximum 6 images",
+      },
+    },
     description: {
       type: String,
       required: [true, "Product description is required"],
     },
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
       required: [true, "Product category is required"],
     },
     stock: {
       type: Number,
       required: true,
+      default: 0,
+    },
+    rating: {
+      type: Number,
       default: 0,
     },
     numReviews: {

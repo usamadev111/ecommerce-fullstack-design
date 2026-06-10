@@ -1,8 +1,14 @@
-import React from "react";
-import HeroSection from "../../components/Home/HeroSection";
+import HeroSection from "../../components/home/HeroSection.jsx";
+import DealsSection from "../../components/home/DealsSection.jsx";
 
-const HomePage = () => {
-  return <HeroSection />;
-};
+function HomePage() {
+  return (
+    <>
+      <HeroSection />
+
+      <DealsSection />
+    </>
+  );
+}
 
 export default HomePage;

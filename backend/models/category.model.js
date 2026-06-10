@@ -24,17 +24,15 @@ const categorySchema = new mongoose.Schema(
   },
 );
 
-categorySchema.pre("save", function (next) {
+categorySchema.pre("save", async function () {
   if (this.isModified("name")) {
     this.slug = this.name
-      .tolwercase()
+      .toLowerCase()
       .trim()
       .replace(/['"']/g, "")
       .replace(/\s+/g, "-")
       .replace(/[^\w-]/g, "");
   }
-
-  next();
 });
 
 export const Category = new mongoose.model("Category", categorySchema);

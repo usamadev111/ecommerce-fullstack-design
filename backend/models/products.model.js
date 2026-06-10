@@ -7,6 +7,16 @@ const productSchema = new mongoose.Schema(
       required: [true, "Product name is required"],
     },
 
+    description: {
+      type: String,
+      required: [true, "Product description is required"],
+    },
+    brand: {
+      type: String,
+      required: [true, "Product brand is required"],
+      trim: true,
+    },
+
     price: {
       type: Number,
       required: [true, "Product price is required"],
@@ -14,6 +24,27 @@ const productSchema = new mongoose.Schema(
     originalPrice: {
       type: Number,
       default: null,
+    },
+
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: [true, "Product category is required"],
+    },
+
+    condition: {
+      type: String,
+      enum: {
+        values: ["New", "Refurbished", "Used"],
+        message: "{VALUE} is not a valid condition",
+      },
+      default: "Any",
+    },
+
+    stock: {
+      type: Number,
+      required: true,
+      default: 0,
     },
 
     image: {
@@ -30,20 +61,7 @@ const productSchema = new mongoose.Schema(
         message: " A product can have maximum 6 images",
       },
     },
-    description: {
-      type: String,
-      required: [true, "Product description is required"],
-    },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
-      required: [true, "Product category is required"],
-    },
-    stock: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
+
     rating: {
       type: Number,
       default: 0,
